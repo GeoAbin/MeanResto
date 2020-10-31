@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">add</th>
+      <th scope="col">email</th>
+    </tr>
+  </thead>
+  <tbody class="Restolist" *ngIf="resto$ | async as Restolist">
+    <tr *ngFor="let item of Restolist">
+      <th>{{item.name}}</th>
+      <th>{{item.add}}</th>
+      <th>{{item.email}}</th>
+      <!-- <th>
+        <i (click)="deleteResto(item.id)" class="fa fa-trash" style="font-size:20px;color:red;"></i>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a routerLink="/update/{{item.id}}"><i class="fa fa-edit" style="font-size:20px;color:blue;"> </i> </a>
+      </th> -->
+
+    </tr>
+  </tbody>
+</table>
