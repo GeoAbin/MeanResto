@@ -1,0 +1,66 @@
+<div >
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody class="Restolist" *ngIf="resto$ | async as Restolist">
+    <tr *ngFor="let item of Restolist">
+      <th>{{item.name}}</th>
+      <th>{{item.add}}</th>
+      <th>{{item.email}}</th>
+      <th>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" (click)="showEdit()" class="btn btn-primary" >Update</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" (click)="deleteResto(item._id)" class="btn btn-danger">Delete</button>
+  </th>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- update resto -->
+<div >
+  <div class="form-wrrap" *ngIf="!showForm">
+    <h2>Update Resto</h2>
+        <form [formGroup]="formupdate" (ngSubmit)="updateResto()" class="well">
+          <div class=form-group>
+          <input type="text" placeholder="Enter Name" [(ngModel)]="resto.name" formControlName="name" >
+          </div>
+          <div class=form-group>
+            <input type="text" placeholder="Enter Address" [(ngModel)]="resto.add" formControlName="add" >
+            </div>
+            <div class=form-group>
+              <input type="text" placeholder="Enter Email" [(ngModel)]="resto.email" formControlName="email" >
+              </div>
+              <button  type="submit" class="btn btn-success"  [disabled]="!formupdate.valid">Update Resto</button>
+        </form>
+  </div>
+  </div>
+
+<!-- add resto -->
+<div>
+<button (click)="newform()"  type="button" class="btn btn-success btn-block">Add New Resto</button>
+<div *ngIf="!hidenew">
+  <h2>New Resto</h2>
+      <form [formGroup]="restoform" (ngSubmit)="newResto()" class="well">
+        <div class=form-group>
+        <input type="text" placeholder="Enter Name" formControlName="name" >
+        </div>
+        <div class=form-group>
+          <input type="text" placeholder="Enter Address" formControlName="add" >
+          </div>
+          <div class=form-group>
+            <input type="text" placeholder="Enter Email" formControlName="email" >
+            </div>
+            <button  type="submit" class="btn btn-success"  [disabled]="!restoform.valid">Save Resto</button>
+      </form>
+</div>
+</div>
+
+

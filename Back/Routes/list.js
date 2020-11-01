@@ -4,7 +4,7 @@ const List = require("../Model/List")
 const verify = require("../Routes/verifyToken")
 
 //getting all listing
-router.get("/", verify, async(req,res)=>{
+router.get("/", async(req,res)=>{    //verify
   try{
       const list=await List.find()
       res.json(list)
