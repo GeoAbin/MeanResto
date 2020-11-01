@@ -26,17 +26,17 @@
 
 <!-- update resto -->
 <div >
-  <div class="form-wrrap" *ngIf="class="Restolist" *ngIf="resto$ | async as Restolist>
+  <div class="form-wrrap" class="Restolist" *ngIf="resto$ | async as Restolist">
     <h2>Update Resto</h2>
         <form [formGroup]="formupdate" (ngSubmit)="updateResto()" class="well">
           <div class=form-group>
-          <input type="text" placeholder="Enter Name" [(ngModel)]="resto.name" formControlName="name" >
+          <input type="text" placeholder="Enter Name" [(ngModel)]="Restolist.name" formControlName="name" >
           </div>
           <div class=form-group>
-            <input type="text" placeholder="Enter Address" [(ngModel)]="resto.add" formControlName="add" >
+            <input type="text" placeholder="Enter Address" [(ngModel)]="Restolist.add" formControlName="add" >
             </div>
             <div class=form-group>
-              <input type="text" placeholder="Enter Email" [(ngModel)]="resto.email" formControlName="email" >
+              <input type="text" placeholder="Enter Email" [(ngModel)]="Restolist.email" formControlName="email" >
               </div>
               <button  type="submit" class="btn btn-success"  [disabled]="!formupdate.valid">Update Resto</button>
         </form>
