@@ -14,7 +14,7 @@ export class UDRestoComponent implements OnInit {
 
   resto$:Observable<Resto[]>
   public hidenew:boolean=true
-  public showForm:boolean=true
+  public showForm:boolean
   restaurant$:Observable<Resto>
   id:any
 
@@ -58,7 +58,7 @@ export class UDRestoComponent implements OnInit {
      this.hidenew=false
    }
    showEdit(){
-     this.showForm=false
+     this.showForm=true
    }
    updateResto(){
     if(this.formupdate.valid){
