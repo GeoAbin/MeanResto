@@ -22,6 +22,9 @@ export class RestoService {
   getResto(): Observable<Resto[]>{
     return this.http.get<Resto[]>(this.rooturl)
   }
+  getSingleResto(id:string){
+    return this.http.get<Resto>(`${this.rooturl}/${id}`)
+  }
   addResto(addresto){
     return this.http.post<any>(this.rooturl,addresto,this.httpOptions)
   }

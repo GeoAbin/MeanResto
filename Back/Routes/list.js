@@ -43,7 +43,7 @@ router.get("/:listId", async(req,res)=>{
 })
 
 // //update listing
-router.put("/:listId", verify, async (req,res)=>{
+router.put("/:listId", async (req,res)=>{
   try{
       const list={
         name: req.body.name,

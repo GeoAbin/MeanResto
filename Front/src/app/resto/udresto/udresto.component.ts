@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UserService } from 'src/app/user/service/user.service';
 import { Resto } from '../model/resto';
 import { RestoService } from '../service/resto.service';
 
@@ -38,7 +39,7 @@ export class UDRestoComponent implements OnInit {
 
 
 
-  constructor(private restoService:RestoService, private router:Router) { }
+  constructor(private restoService:RestoService, private router:Router,public userService:UserService) { }
 
   ngOnInit(): void {
     this.resto$=this.restoService.getResto()
@@ -57,21 +58,24 @@ export class UDRestoComponent implements OnInit {
    {
      this.hidenew=false
    }
-   showEdit(){
-     this.showForm=true
+   saveIdshowEdit(id){
+     this.showForm=!this.showForm
+     this.id=id
+     this.restaurant$=this.restoService.getSingleResto(this.id)
    }
    updateResto(){
     if(this.formupdate.valid){
       this.restoService.editResto(this.formupdate.value,this.id).subscribe(res=>{
         this.formupdate.reset()
         this.router.navigate(["/restos"])
+        window.location.reload()
       })
     }
    }
    deleteResto(id){
     this.restoService.deleteResto(id).subscribe(res=>{
       console.log(res)
-      window.location.reload();
+      window.location.reload()
    })
   }
 

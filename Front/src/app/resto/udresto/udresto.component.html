@@ -14,10 +14,10 @@
       <th>{{item.email}}</th>
       <th>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button type="button" (click)="showEdit()" class="btn btn-primary" >Update</button>
+      <button type="button" *ngIf="userService.loggedIn()" (click)="saveIdshowEdit(item._id)" class="btn btn-primary" >Update</button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button type="button" (click)="deleteResto(item._id)" class="btn btn-danger">Delete</button>
+    <button type="button" *ngIf="userService.loggedIn()" (click)="deleteResto(item._id)" class="btn btn-danger">Delete</button>
   </th>
     </tr>
   </tbody>
@@ -26,7 +26,7 @@
 
 <!-- update resto -->
 <div *ngIf="showForm" >
-  <div class="form-wrrap" class="Restolist" *ngIf="resto$ | async as Restolist">
+  <div class="form-wrrap" class="Restolist" *ngIf="restaurant$ | async as Restolist">
     <h2>Update Resto</h2>
         <form [formGroup]="formupdate" (ngSubmit)="updateResto()" class="well">
           <div class=form-group>
@@ -45,7 +45,7 @@
 
 <!-- add resto -->
 <div>
-<button (click)="newform()"  type="button" class="btn btn-success btn-block">Add New Resto</button>
+<button (click)="newform()" *ngIf="userService.loggedIn()"  type="button" class="btn btn-success btn-block">Add New Resto</button>
 <div *ngIf="!hidenew">
   <h2>New Resto</h2>
       <form [formGroup]="restoform" (ngSubmit)="newResto()" class="well">
