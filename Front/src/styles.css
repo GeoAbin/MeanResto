@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files
 form{
   max-width: 500px;
   padding: 20px;
@@ -8,3 +8,24 @@ form{
   border-radius: 10px;
 }
 
+html, body { height: 100%; }
+
+table, th, td {
+  border: 2px solid black;
+  width: auto;
+  padding: 15px;
+  text-align: center;
+}
+th{
+  height: 50px;
+ background-color: ;
+} */
+
+form{
+  max-width: 500px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  border-radius: 10px;
+}
